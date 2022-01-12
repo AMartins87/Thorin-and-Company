@@ -1,36 +1,15 @@
 import os
 from flask import Flask, render_template
-"""
-First, we're importing our Flask class
-"""
 
 app = Flask(__name__)
-"""
-We're then creating an instance of this and
-storing it in a variable called 'app'
-"""
-
-"""
-The first argument of the Flask class,
-is the name of the application's module - our package.
-Since we're just using a single module, we can use __name__
-which is a built-in Python variable.
-Flask needs this so that it knows
-where to look for templates and static files
-"""
 
 
 @app.route("/")
+
+
 def index():
     return render_template("index.html")
 
-
-"""
-When we try to browse to the root directory,
-as indicated by the "/", then Flask triggers
-the index function underneath and returns
-the "Hello, World" text.
-"""
 
 @app.route("/about")
 def about():
@@ -38,9 +17,13 @@ def about():
 
 
 @app.route("/contact")
-def about():
+def contact():
     return render_template("contact.html")
 
+
+@app.route("/careers")
+def careers():
+    return render_template("careers.html")
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP", "0.0.0.0"),
